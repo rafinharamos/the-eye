@@ -16,10 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
 
 from drf_spectacular.views import (
     SpectacularAPIView,
@@ -40,8 +36,6 @@ urlpatterns = [
         name="redoc",
     ),
     path('admin/', admin.site.urls),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path("companies/", include("companies.api.v1.urls", namespace="companies")),
+    path("events/", include("events.api.v1.urls", namespace="events")),
 
 ]
